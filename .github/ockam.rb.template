@@ -1,0 +1,47 @@
+// Note This file if touched must be updated in ./github/ockam.rb.template
+// for release automation to work
+
+class Ockam < Formula
+  desc "End-to-end encryption and mutual authentication for distributed applications"
+  homepage "https://github.com/build-trust/ockam"
+  license "Apache-2.0"
+
+  @@target = nil
+
+  if OS.mac?
+    if Hardware::CPU.arm?
+      @@target = "aarch64-apple-darwin"
+      sha256 "ockam.aarch64-apple-darwin_sha256_value"
+    end
+
+    if Hardware::CPU.intel?
+      @@target = "x86_64-apple-darwin"
+      sha256 "ockam.x86_64-apple-darwin_sha256_value"
+    end
+  end
+
+  if OS.linux?
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      @@target = "aarch64-unknown-linux-gnu"
+      sha256 "ockam.aarch64-unknown-linux-gnu_sha256_value"
+    end
+
+    if Hardware::CPU.intel?
+      @@target = "x86_64-unknown-linux-gnu"
+      sha256 "ockam.x86_64-unknown-linux-gnu_sha256_value"
+    end
+  end
+
+  url "#{homepage}/releases/download/release_tag/ockam.#{@@target}"
+
+  def install
+    if !@@target.nil?
+      mv "ockam.#{@@target}", "ockam"
+      bin.install "ockam"
+    end
+  end
+
+  test do
+    system "ockam", "--version"
+  end
+end
