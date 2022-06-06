@@ -80,6 +80,11 @@ jobs:
 
           while read -r line; do
             files=($line)
+            if [[ ${files[1]} == *".so"* ]]; then
+              echo "elixir nif library found, skipping."
+              continue
+            fi
+
             sed -i "s/${files[1]}_sha256_value/${files[0]}/g" ockam.rb
           done < ${{ steps.release_asset.outputs.dir }}/sha256sums.txt
 
