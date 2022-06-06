@@ -80,7 +80,7 @@ jobs:
 
           while read -r line; do
             files=($line)
-            if [[ ${files[1]} == *".so"* ]]; then
+            if [[ ${files[1]} == *".so"* || ${files[1]} == *".sig"* ]]; then
               echo "elixir nif library found, skipping."
               continue
             fi
