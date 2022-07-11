@@ -32,7 +32,7 @@ jobs:
           set -x
           temp_dir=$(mktemp -d)
           cd $temp_dir
-          gh release download ${{ github.event.inputs.tag }} -R build-trust/ockam
+          gh release download ${{ github.event.inputs.tag }} -R ${{ github.repository_owner }}/ockam
           ls
           echo ::set-output name=dir::$temp_dir
 
