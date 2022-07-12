@@ -15,6 +15,10 @@ class Ockam < Formula
         mv "ockam.aarch64-apple-darwin", "ockam"
         bin.install "ockam"
       end
+
+
+
+      
     end
 
     if Hardware::CPU.intel?
@@ -27,6 +31,10 @@ class Ockam < Formula
       end
     end
   end
+
+
+
+
 
   
 
