@@ -23,5 +23,5 @@ jobs:
       - name: Download Github Release
         run: |
           set -x
-          git merge --ff-only ${{ github.event.inputs.branch }}
+          git merge --ff-only origin/${{ github.event.inputs.branch }}
           git push
