@@ -38,16 +38,12 @@ jobs:
 
       - name: Import GPG key
         id: import_gpg
-        uses: hashicorp/ghaction-import-gpg@78437f97569a473e42b227be84d4084c2dfb49ba
-        env:
-          GPG_PRIVATE_KEY: '${{ secrets.GPG_PRIVATE_KEY }}'
-          PASSPHRASE: '${{ secrets.GPG_PASSPHRASE }}'
-
-      - name: Add GPG Key
-        run: |
-          git config --global user.email "${{ secrets.GPG_EMAIL }}"
-          git config --global user.name "${{ secrets.GPG_USER_NAME }}"
-          git config --global user.signingkey "${{ steps.import_gpg.outputs.fingerprint }}"
+        uses: crazy-max/ghaction-import-gpg@38c8efb8f02049659d47caa340b76074c5b9c67e
+        with:
+          gpg_private_key: '${{ secrets.GPG_PRIVATE_KEY }}'
+          passphrase: '${{ secrets.GPG_PASSPHRASE }}'
+          git_user_signingkey: true
+          git_commit_gpgsign: true
 
       - name: Install Cosign
         uses: sigstore/cosign-installer@536b37ec5d5b543420bdfd9b744c5965bd4d8730

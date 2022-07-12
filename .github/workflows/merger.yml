@@ -1,4 +1,4 @@
-
+name: Branch Merge Support
 on:
   workflow_dispatch:
     inputs:
