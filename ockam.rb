@@ -6,6 +6,14 @@ class Ockam < Formula
   homepage "https://github.com/build-trust/ockam"
   license "Apache-2.0"
 
+
+
+
+
+
+
+  
+
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/build-trust/ockam/releases/download/ockam_v0.63.0/ockam.aarch64-apple-darwin"
