@@ -64,6 +64,5 @@ class Ockam < Formula
 
   test do
     system "ockam", "--version"
-    assert_match "ockam_v0.71.0".sub!("_", " "), shell_output("#{bin}/ockam -V")
   end
 end
