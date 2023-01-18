@@ -8,8 +8,8 @@ class Ockam < Formula
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/build-trust/ockam/releases/download/ockam_v0.71.0/ockam.aarch64-apple-darwin"
-      sha256 "ac3ce69f6dbce4329f766179c1302f8c72187a067e6ff743c2974a0967de5e5c"
+      url "https://github.com/build-trust/ockam/releases/download/ockam_v0.77.0/ockam.aarch64-apple-darwin"
+      sha256 "07c714e55b6751b9f9807dd09ff3c62507111f76aa1dbc38fb2be16de7fcf942"
 
       def install
         mv "ockam.aarch64-apple-darwin", "ockam"
@@ -21,8 +21,8 @@ class Ockam < Formula
     end
 
     if Hardware::CPU.intel?
-      url "https://github.com/build-trust/ockam/releases/download/ockam_v0.71.0/ockam.x86_64-apple-darwin"
-      sha256 "db643e45ff415c1ae3137b7bf4e3b569a24db3d351811cd0508ee9bac838d691"
+      url "https://github.com/build-trust/ockam/releases/download/ockam_v0.77.0/ockam.x86_64-apple-darwin"
+      sha256 "7319af7dea78521b851456d5fd9606c545130c473a5833d77c1af0b5897cbfbd"
 
       def install
         mv "ockam.x86_64-apple-darwin", "ockam"
@@ -36,8 +36,8 @@ class Ockam < Formula
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/build-trust/ockam/releases/download/ockam_v0.71.0/ockam.aarch64-unknown-linux-gnu"
-      sha256 "26598b0f39c1c65f758510c272687f716cfdd2fbdb3d1a1c639794308b8b4b25"
+      url "https://github.com/build-trust/ockam/releases/download/ockam_v0.77.0/ockam.aarch64-unknown-linux-gnu"
+      sha256 "ockam.aarch64-unknown-linux-gnu_sha256_value"
 
       def install
         mv "ockam.aarch64-unknown-linux-gnu", "ockam"
@@ -49,8 +49,8 @@ class Ockam < Formula
     end
 
     if Hardware::CPU.intel?
-      url "https://github.com/build-trust/ockam/releases/download/ockam_v0.71.0/ockam.x86_64-unknown-linux-gnu"
-      sha256 "2ae12c26c5004fa94c0f8a956e47dd7e7dd3d8dd00bf99ac22dab1406886d693"
+      url "https://github.com/build-trust/ockam/releases/download/ockam_v0.77.0/ockam.x86_64-unknown-linux-gnu"
+      sha256 "ockam.x86_64-unknown-linux-gnu_sha256_value"
 
       def install
         mv "ockam.x86_64-unknown-linux-gnu", "ockam"
@@ -64,5 +64,6 @@ class Ockam < Formula
 
   test do
     system "ockam", "--version"
+    assert_match "ockam_v0.77.0".sub!("_", " "), shell_output("#{bin}/ockam -V")
   end
 end
